@@ -24,29 +24,29 @@ export class Email {
    * Content must be at least 30 letters
    */
 
-  isEmailAccountValid(email: string, type: 'sender'|'receiver') {
+  private isEmailAccountValid(email: string, type: 'sender'|'receiver') {
     if (!email.toLowerCase().match(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       )) {
-      throw new Error(`Email invalid, please put correct ${type} account`)
+      throw new TypeError(`Email invalid, please put correct ${type} account`)
     }
     return email
   }
   
-  isSubjectValid(subject: string) {
+  private isSubjectValid(subject: string) {
     if (!subject
       .toLowerCase()
       .match(
         /^.*\s+.*$/
       )) {
-      throw new Error(`Subject invalid, subject must have a minimum space in middle`)
+      throw new TypeError(`Subject invalid, subject must have a minimum space in middle`)
     }
     return subject
   }
 
-  isContentValid(content: string) {
+  private isContentValid(content: string) {
     if (!(content.length > 29)) {
-      throw new Error(`Content invalid, content must be at least 30 letters`)
+      throw new TypeError(`Content invalid, content must be at least 30 letters`)
     }
     return content
   }
