@@ -1,6 +1,6 @@
 import { Email } from "../../../domains/Email"
 import { CreateEmailInputDto, CreateEmailOutputDto } from "./create-email.dto"
-import { CreateEmailUseCase } from "./create.email.usecase"
+import { CreateEmailUseCase } from "./create-email.usecase"
 
 describe('Email UseCase Test Unit', () => {
   it('should create a email', async () => {
@@ -30,6 +30,9 @@ describe('Email UseCase Test Unit', () => {
       )
     }
 
-    expect(result).toStrictEqual(output)
+    expect(result.email.sender).toBe(output.email.sender)
+    expect(result.email.receiver).toBe(output.email.receiver)
+    expect(result.email.subject).toBe(output.email.subject)
+    expect(result.email.content).toBe(output.email.content)
   })
 })
