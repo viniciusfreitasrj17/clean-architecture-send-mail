@@ -3,6 +3,7 @@ export class Email {
   private _receiver: string;
   private _subject: string;
   private _content: string;
+  private _id: number;
 
   constructor(
     sender: string,
@@ -14,6 +15,7 @@ export class Email {
     this._receiver = this.isEmailAccountValid(receiver, 'receiver')
     this._subject = this.isSubjectValid(subject)
     this._content = this.isContentValid(content)
+    this._id = Math.ceil(Math.random() * 10 ** 15)
   }
 
   /**
@@ -23,6 +25,12 @@ export class Email {
    * Subject must have a minimum space in middle
    * Content must be at least 30 letters
    */
+
+  get sender() { return this._sender }
+  get receiver() { return this._receiver }
+  get subject() { return this._subject }
+  get content() { return this._content }
+  get id() { return this._id }
 
   private isEmailAccountValid(email: string, type: 'sender'|'receiver') {
     if (!email.toLowerCase().match(
