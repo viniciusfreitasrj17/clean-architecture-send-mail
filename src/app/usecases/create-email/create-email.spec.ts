@@ -5,8 +5,8 @@ import { CreateEmailUseCase } from "./create-email.usecase"
 describe('Email UseCase Test Unit', () => {
   it('should create a email', async () => {
     const input: CreateEmailInputDto = {
-      sender: "email@example.com",
-      receiver: "email@example.com",
+      sender: "viniciusfreitasrj17@gmail.com",
+      receiver: "viniciusfreitasrj17@gmail.com",
       subject: "Subject Here",
       content: "Here we put a Content for this mail"
     }
@@ -15,16 +15,21 @@ describe('Email UseCase Test Unit', () => {
       return { create: jest.fn() }
     }
 
+    const emailSendGridAdapter = () => {
+      return { sendMail: jest.fn() }
+    }
+
     const createEmailUseCase = new CreateEmailUseCase(
-      createEmailRepository()
+      createEmailRepository(),
+      emailSendGridAdapter()
     )
 
     const result = await createEmailUseCase.execute(input)
 
     const output: CreateEmailOutputDto = {
       email: new Email(
-        "email@example.com",
-        "email@example.com",
+        "viniciusfreitasrj17@gmail.com",
+        "viniciusfreitasrj17@gmail.com",
         "Subject Here",
         "Here we put a Content for this mail"
       )

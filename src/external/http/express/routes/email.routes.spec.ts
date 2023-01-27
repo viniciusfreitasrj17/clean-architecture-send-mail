@@ -11,8 +11,8 @@ describe('E2E email tests', () => {
 
     // Arrange
     const input = {
-      sender: "email@example.com",
-      receiver: "email@example.com",
+      sender: "viniciusfreitasrj17@gmail.com",
+      receiver: "viniciusfreitasrj17@gmail.com",
       subject: "Subject Here",
       content: "Here we put a Content for this mail"
     }
@@ -34,8 +34,8 @@ describe('E2E email tests', () => {
   it('should generate erro 500 when create a email', async () => {
     // Arrange
     const input = {
-      sender: "email@example.com",
-      receiver: "email@example.com",
+      sender: "viniciusfreitasrj17@gmail.com",
+      receiver: "viniciusfreitasrj17@gmail.com",
       subject: "Subject Error",
       content: "Content Error"
     }
